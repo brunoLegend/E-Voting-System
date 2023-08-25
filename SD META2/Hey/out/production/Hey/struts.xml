@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- The core configuration file for the framework is the default (struts.xml) file
+and should reside on the classpath of the webapp (generally /WEB-INF/classes). -->
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+  <!-- devMode equals debug information and reload everything for every request -->
+  <constant name="struts.devMode" value="true" />
+  <constant name="struts.ui.theme" value="simple" />
+    <constant name="struts.action.excludePattern" value="/ws"/>
+
+
+
+  <package name="hey" extends="struts-default">
+	
+	<default-action-ref name="index" />
+	
+	<global-results>
+		<result name="error">/error.jsp</result>
+	</global-results>
+
+	<!-- all exceptions not caught by the application will lead to error.jsp -->
+	<global-exception-mappings>
+		<exception-mapping exception="java.lang.Exception" result="error" />
+	</global-exception-mappings>
+
+	<!-- 'index' action leads to the view provided by chat.jsp -->
+    <action name="index">
+      <result>/index.jsp</result>
+    </action>
+      <action name="admin">
+          <result>/admin.jsp</result>
+      </action>
+
+	<!-- 'login' action calls 'execute' in 'LoginAction' -->
+    <action name="autentication" class="hey.action.LoginAction" method="execute">
+        <result name="admin">/admin.jsp</result>
+      <result name="success">/user_choose_election.jsp</result>
+      <result name="login">/index.jsp</result>
+    </action>
+
+      <action name="registerpage">
+          <result>/register.jsp</result>
+      </action>
+
+      <action name="createElectionpage">
+          <result>/createElection.jsp</result>
+      </action>
+      <action name="gerirEleicaopage">
+          <result>/gerirEleicao.jsp</result>
+      </action>
+
+      <action name="onlineUsers">
+          <result>/onlineUsers.jsp</result>
+      </action>
+
+      <action name="electionlive">
+          <result>/chooseelectionlive.jsp</result>
+      </action>
+
+      <action name="assistirlive" class="hey.action.assistirliveAction" method="execute">
+          <result>/assistirlive.jsp</result>
+      </action>
+
+      <action name="votepage" class="hey.action.chooseElectionAction" method="execute">
+          <result>/user_vote.jsp</result>
+      </action>
+
+      <action name="chooseListaspage">
+          <result>/chooseListas.jsp</result>
+      </action>
+
+      <action name="chooseListas" class="hey.action.chooseListasAction" method="execute">
+          <result>/gerirListas.jsp</result>
+      </action>
+
+
+      <action name="gerirlistas" class="hey.action.gerirListasAction" method="execute">
+          <result name="success">/admin.jsp</result>
+      </action>
+
+      <action name="consultardetalhespage">
+          <result>/consultardetalhes.jsp</result>
+      </action>
+
+      <action name="consultardetalhes" class="hey.action.consultardetalhesAction" method="execute">
+          <result name="success">/detalhespessoa.jsp</result>
+      </action>
+
+      <action name="gerirMesaspage">
+          <result>/gerirMesas.jsp</result>
+      </action>
+
+      <action name="logout">
+          <result>/index.jsp</result>
+      </action>
+
+
+      <action name="associarpage" class="hey.action.logoutAction" method="execute">
+          <result>/associarMesa.jsp</result>
+      </action>
+
+      <action name="associarMesa" class="hey.action.associarMesaAction" method="execute">
+          <result>/chooseDep.jsp</result>
+      </action>
+
+      <action name="chooseDep" class="hey.action.chooseDepAction" method="execute">
+          <result name="success">/admin.jsp</result>
+      </action>
+
+      <action name="removerpage">
+          <result>/removerMesa.jsp</result>
+      </action>
+
+      <action name="criarmesapage">
+          <result>/criarMesa.jsp</result>
+      </action>
+
+      <action name="criarMesa" class="hey.action.criarMesaAction" method="execute">
+          <result>/admin.jsp</result>
+      </action>
+
+      <action name="removerMesa" class="hey.action.removerMesaAction" method="execute">
+          <result name="success">/chooseDep.jsp</result>
+      </action>
+
+
+
+
+
+      <action name="register" class="hey.action.RegisterAction" method="execute">
+          <result name="success">/admin.jsp</result>
+          <result name="register">/register.jsp</result>
+      </action>
+
+      <action name="createElection" class="hey.action.createElectionAction" method="execute">
+          <result name="success">/admin.jsp</result>
+          <result name="election">/createElection.jsp</result>
+      </action>
+
+      <action name="gerirEleicao" class="hey.action.GerirEleicaoAction" method="execute">
+          <result name="success">/gerirEleicao.jsp</result>
+          <result name="edit">/EditElection.jsp</result>
+          <result name="consult">/ConsultElection.jsp</result>
+      </action>
+
+      <action name="EditElection" class="hey.action.EditElectionAction" method="execute">
+          <result name="success">/admin.jsp</result>
+          <result name="edit">/EditElection.jsp</result>
+      </action>
+
+      <action name="vote" class="hey.action.VoteAction" method="execute">
+          <result name="success">/index.jsp</result>
+
+      </action>
+
+
+      <action name="GerirListas" class="hey.action.EditElectionAction" method="execute">
+          <result name="success">/admin.jsp</result>
+          <result name="edit">/EditElection.jsp</result>
+      </action>
+
+
+
+
+
+
+  </package>
+
+</struts>
