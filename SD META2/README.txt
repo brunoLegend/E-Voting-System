@@ -1,20 +1,18 @@
-.Central_Server é o RMI server: Recebe como argumento o ip onde o rmi está a correr
+Central_Server is the RMI Server: It receives the IP address where the RMI is running as an argument.
 
-.Mesa_voto é o servidor Multicast recebe:
-1-Nome do departamento
-2-Numero máximo de terminais
-3-ip do servidor que tem o rmi
+Mesa_voto is the Multicast Server which receives:
 
-.Terminal recebe como argumento
+Department name
+Maximum number of terminals
+IP address of the server hosting the RMI
+Terminal receives as an argument:
 
-1-endereço multicast, é sempre 224.3.2. o ultimo número depende da mesa onde se vai ligar
-No central_server.java existe uma função config que à frente de cada nome de departamento contém o seu número,
-por exemplo para o DEEC o endereço multicast é o 224.3.2.2 e para o DEI é o 224.3.2.1
+Multicast address, which is always 224.3.2. The last number depends on the mesa (table) to which it will connect.
+In central_server.java, there's a config function that associates each department name with a number. For example, for DEEC, the multicast address is 224.3.2.2, and for DEI, it's 224.3.2.1.
+Admin_Console receives the IP address where the RMI server is running as an argument.
 
-.Admin_Console
-recebe como argumento o ip onde está a correr o servidorRmi
+For Milestone 2:
 
-
-Para a meta2:
-Apenas correr o central_server em primeiro lugar e de seguida o tomcat
-O admin está no código por isso já deve ser possivel fazer login com-> Username:Admin Password:Admin
+Start the central_server first.
+Then start Tomcat.
+The admin credentials are hardcoded in the code, so it should be possible to log in with Username: Admin, Password: Admin.
